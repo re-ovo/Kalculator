@@ -16,7 +16,7 @@ enum class SpaceSize(val value: Dp) {
 
 @Composable
 fun VerticalSpace(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     size: SpaceSize = SpaceSize.Normal,
     content: @Composable () -> Unit
 ) {
@@ -30,7 +30,7 @@ fun VerticalSpace(
 
 @Composable
 fun HorizontalSpace(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     size: SpaceSize = SpaceSize.Normal,
     content: @Composable () -> Unit
 ) {

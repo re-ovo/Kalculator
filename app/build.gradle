@@ -79,6 +79,9 @@ dependencies {
     // Compose Settings
     implementation 'com.github.re-ovo:compose-setting:1.0.14'
 
+    // Profile Installer
+    implementation "androidx.profileinstaller:profileinstaller:1.2.0"
+
     // Test Lib
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
