@@ -10,7 +10,17 @@
 package me.rerere.kalculator.util
 
 import java.math.BigDecimal
-import kotlin.math.*
+import java.math.RoundingMode
+import kotlin.math.abs
+import kotlin.math.acos
+import kotlin.math.asin
+import kotlin.math.atan
+import kotlin.math.cos
+import kotlin.math.ln
+import kotlin.math.log10
+import kotlin.math.sin
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 // Token类型
 internal enum class TokenType {
@@ -90,7 +100,7 @@ internal fun tokenize(input: String): List<Token> {
                 i++
             }
 
-            char == '*' || char == 'x' -> {
+            char == '*' || char == 'x' || char == '×' -> {
                 tokens.add(Token(TokenType.MULTIPLY, char.toString()))
                 i++
             }
@@ -414,7 +424,7 @@ internal fun evalRPN(tokens: List<Token>, scale: Int = 10): BigDecimal {
                 val right = stack.removeAt(stack.lastIndex)
                 val left = stack.removeAt(stack.lastIndex)
 
-                stack.add(left.divide(right))
+                stack.add(left.divide(right, scale, RoundingMode.HALF_UP))
             }
 
             TokenType.POWER -> {
@@ -431,7 +441,9 @@ internal fun evalRPN(tokens: List<Token>, scale: Int = 10): BigDecimal {
             else -> throw Exception("Unknown token type: ${token.type}")
         }
     }
-    return stack.removeAt(stack.lastIndex)
+    val result = stack.removeAt(stack.lastIndex)
+    // 去除小数点后面多余的0
+    return result.stripTrailingZeros()
 }
 
 const val DEFAULT_DEBUG = false
