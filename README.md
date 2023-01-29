@@ -3,6 +3,13 @@
 
 > 正在开发中，暂时无法使用
 
+计算工具类: `/src/main/java/me/rerere/kalculator/util/CalculationUtil.kt`
+可以很方便的计算数学表达式的结果，而不是像某些计算器一样按一个运算符就计算一遍，无法看到完整表达式
+调用`val result = eval("表达式")`即可
+如果想自己搓计算器的，欢迎参考 (写的很烂)
+
+本项目大概率不会继续写了，compose写吐了 😭
+
 ## 技术栈
 - Jetpack Compose: 构建原生UI
 - Appyx: 导航库，相比官方的Navigation，更加强大
